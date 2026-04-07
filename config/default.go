@@ -192,6 +192,11 @@ Type "mangal sources list" to show available sources`,
 		`Whether to download manga cover or not`,
 	},
 	{
+		key.DownloaderEscapeWhitespace,
+		true,
+		`Replace whitespace with underscore in downloaded files`,
+	},
+	{
 		key.FormatsUse,
 		"pdf",
 		`Default format to export chapters
@@ -382,7 +387,7 @@ panic, fatal, error, warn, info, debug, trace`,
 	{
 		key.TUIReadOnEnter,
 		true,
-		"Read chapter on enter if other chapters aren't selected",
+		"Read chapter on enter if other chapters aren't selected. Download otherwise",
 	},
 	{
 		key.TUISearchPromptString,
