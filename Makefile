@@ -14,9 +14,9 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  build        Build the mangal binary"
-	@echo "  install      Install the mangal binary"
-	@echo "  uninstall    Uninstall the mangal binary"
+	@echo "  build        Build the koma binary"
+	@echo "  install      Install the koma binary"
+	@echo "  uninstall    Uninstall the koma binary"
 	@echo "  test         Run the tests"
 	@echo "  gif          Generate usage gifs"
 	@echo "  help         Show this help message"
@@ -33,7 +33,7 @@ test:
 	@go test ./...
 
 uninstall:
-	@rm -f $(shell which mangal)
+	@rm -f $(shell which koma)
 
 gif:
 	@vhs assets/tui.tape

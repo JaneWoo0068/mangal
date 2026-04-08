@@ -80,16 +80,17 @@ dockers:
   - goos: linux
     goarch: amd64
     image_templates:
-      - "metafates/mangal:latest"
+      - "janewoo0068/koma:latest"
+      - "janewoo0068/koma:{{ .Tag }}"
     skip_push: false
     use: docker
 
 brews:
-  - name: mangal
+  - name: koma
 
     tap:
-      owner: metafates
-      name: homebrew-mangal
+      owner: JaneWoo0068
+      name: homebrew-koma
       branch: main
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
 
@@ -98,66 +99,41 @@ brews:
       email: bot@goreleaser.com
 
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
-    homepage: "https://github.com/metafates/mangal"
+    homepage: "https://github.com/JaneWoo0068/koma"
     description: "The ultimate CLI manga downloader!"
     license: "MIT"
     skip_upload: false
 
     test: |
-      system "#{bin}/mangal -v"
+      system "#{bin}/koma -v"
 
     install: |-
-      bin.install "mangal"
-      bash_completion.install "completions/mangal.bash" => "mangal"
-      zsh_completion.install "completions/mangal.zsh" => "_mangal"
-      fish_completion.install "completions/mangal.fish"
-
-scoop:
-  bucket:
-    owner: metafates
-    name: scoop-metafates
-    branch: main
-    token: "{{ .Env.SCOOP_TAP_GITHUB_TOKEN }}"
-
-  folder: bucket
-
-  commit_author:
-    name: goreleaserbot
-    email: bot@goreleaser.com
-
-  commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
-  homepage: "https://github.com/metafates/mangal"
-  description: "The ultimate CLI manga downloader!"
-  license: MIT
-  skip_upload: false
-
+      bin.install "koma"
+      bash_completion.install "completions/koma.bash" => "koma"
+      zsh_completion.install "completions/koma.zsh" => "_koma"
+      fish_completion.install "completions/koma.fish"
 
 release:
   github:
-    owner: metafates
-    name: mangal
+    owner: JaneWoo0068
+    name: koma
 
   name_template: "{{.ProjectName}} v{{.Version}}"
   header: |
-    To install:
-    ```sh
-    curl -sSL mangal.metafates.one/install | sh
-    ```
-
     ## What's new?
 
   footer: |
 
-    **Full Changelog**: https://github.com/metafates/mangal/compare/{{ .PreviousTag }}...{{ .Tag }}
+    **Full Changelog**: https://github.com/JaneWoo0068/koma/compare/{{ .PreviousTag }}...{{ .Tag }}
 
     ---
 
-    Bugs? Suggestions? [Open an issue](https://github.com/metafates/mangal/issues/new/choose)
+    Bugs? Suggestions? [Open an issue](https://github.com/JaneWoo0068/koma/issues/new/choose)
 
 nfpms:
   - file_name_template: "{{ .ConventionalFileName }}"
-    homepage: https://github.com/metafates/mangal
-    maintainer: metafates <fates@duck.com>
+    homepage: https://github.com/JaneWoo0068/koma
+    maintainer: JaneWoo0068
     description: |-
       The most advanced cli manga downloader in the entire universe!
 
@@ -175,19 +151,19 @@ nfpms:
         - changelog-file-missing-in-native-package
 
     contents:
-      - src: ./completions/mangal.bash
-        dst: /usr/share/bash-completion/completions/mangal
+      - src: ./completions/koma.bash
+        dst: /usr/share/bash-completion/completions/koma
         file_info:
           mode: 0644
-      - src: ./completions/mangal.fish
-        dst: /usr/share/fish/completions/mangal.fish
+      - src: ./completions/koma.fish
+        dst: /usr/share/fish/completions/koma.fish
         file_info:
           mode: 0644
-      - src: ./completions/mangal.zsh
-        dst: /usr/share/zsh/vendor-completions/_mangal
+      - src: ./completions/koma.zsh
+        dst: /usr/share/zsh/vendor-completions/_koma
         file_info:
           mode: 0644
       - src: ./LICENSE
-        dst: /usr/share/doc/mangal/copyright
+        dst: /usr/share/doc/koma/copyright
         file_info:
           mode: 0644
