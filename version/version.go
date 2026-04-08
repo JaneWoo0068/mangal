@@ -30,7 +30,7 @@ func Latest() (version string, err error) {
 		return ver, nil
 	}
 
-	resp, err := http.Get("https://api.github.com/repos/metafates/mangal/releases/latest")
+	resp, err := http.Get("https://api.github.com/repos/JaneWoo0068/koma/releases/latest")
 	if err != nil {
 		return
 	}
