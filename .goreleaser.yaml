@@ -76,14 +76,14 @@ changelog:
       - Merge branch
       - go mod tidy
 
-dockers:
-  - goos: linux
-    goarch: amd64
-    image_templates:
-      - "janewoo0068/koma:latest"
-      - "janewoo0068/koma:{{ .Tag }}"
-    skip_push: false
-    use: docker
+# dockers:
+#   - goos: linux
+#     goarch: amd64
+#     image_templates:
+#       - "janewoo0068/koma:latest"
+#       - "janewoo0068/koma:{{ .Tag }}"
+#     skip_push: false
+#     use: docker
 
 brews:
   - name: koma
