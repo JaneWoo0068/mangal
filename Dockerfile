@@ -1,22 +1,22 @@
 FROM alpine:latest
 
-ENV MANGAL_DOWNLOADER_PATH=/downloads
-ENV MANGAL_USER=abc
-ENV MANGAL_UID=1000
-ENV MANGAL_GID=1000
+ENV KOMA_DOWNLOADER_PATH=/downloads
+ENV KOMA_USER=abc
+ENV KOMA_UID=1000
+ENV KOMA_GID=1000
 
 WORKDIR "/config"
-RUN mkdir -p "${MANGAL_DOWNLOADER_PATH}" && addgroup -g "${MANGAL_GID}" "${MANGAL_USER}" && adduser \
+RUN mkdir -p "${KOMA_DOWNLOADER_PATH}" && addgroup -g "${KOMA_GID}" "${KOMA_USER}" && adduser \
     --disabled-password \
     --gecos "" \
     --home "$(pwd)" \
-    --ingroup "${MANGAL_USER}" \
+    --ingroup "${KOMA_USER}" \
     --no-create-home \
-    --uid "${MANGAL_UID}" \
-    "${MANGAL_USER}" && \
-    chown abc:abc /config "${MANGAL_DOWNLOADER_PATH}"
+    --uid "${KOMA_UID}" \
+    "${KOMA_USER}" && \
+    chown abc:abc /config "${KOMA_DOWNLOADER_PATH}"
 
-COPY mangal /usr/local/bin/mangal
-RUN chmod +x /usr/local/bin/mangal
-USER "${MANGAL_USER}"
-ENTRYPOINT ["/usr/local/bin/mangal"]
+COPY koma /usr/local/bin/koma
+RUN chmod +x /usr/local/bin/koma
+USER "${KOMA_USER}"
+ENTRYPOINT ["/usr/local/bin/koma"]
